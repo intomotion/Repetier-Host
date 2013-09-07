@@ -97,7 +97,7 @@ namespace RepetierHost.model
                 _vertices[_currentVertex++] = new _3DVertex(x, y, z);
             }
 
-            internal void AppendFace(short vertex1, short vertex2, short vertex3, short flags)
+            internal void AppendFace(ushort vertex1, ushort vertex2, ushort vertex3, ushort flags)
             {
                 if (_currentFace >= _faces.Length) return;
                 _faces[_currentFace++] = new _3DFace(vertex1, vertex2, vertex3, flags);
@@ -137,29 +137,29 @@ namespace RepetierHost.model
         }
         public class _3DFace
         {
-            public _3DFace(short vertex1, short vertex2, short vertex3, short flags)
+            public _3DFace(ushort vertex1, ushort vertex2, ushort vertex3, ushort flags)
             {
                 Vertex1 = vertex1;
                 Vertex2 = vertex2;
                 Vertex3 = vertex3;
                 Flags = flags;
             }
-            public short Vertex1
+            public ushort Vertex1
             {
                 get;
                 set;
             }
-            public short Vertex2
+            public ushort Vertex2
             {
                 get;
                 set;
             }
-            public short Vertex3
+            public ushort Vertex3
             {
                 get;
                 set;
             }
-            public short Flags
+            public ushort Flags
             {
                 get;
                 set;
@@ -176,7 +176,7 @@ namespace RepetierHost.model
         }
         private struct Face
         {
-            public short Vertex1, Vertex2, Vertex3, Flags;
+            public ushort Vertex1, Vertex2, Vertex3, Flags;
         }
         private struct Word
         {
@@ -222,10 +222,10 @@ namespace RepetierHost.model
         private Face ReadFace(BinaryReader reader)
         {
             Face result = new Face {
-                Vertex1 = reader.ReadInt16(),
-                Vertex2 = reader.ReadInt16(),
-                Vertex3 = reader.ReadInt16(),
-                Flags = reader.ReadInt16()
+                Vertex1 = reader.ReadUInt16(),
+                Vertex2 = reader.ReadUInt16(),
+                Vertex3 = reader.ReadUInt16(),
+                Flags = reader.ReadUInt16()
             };
             return result;
 
